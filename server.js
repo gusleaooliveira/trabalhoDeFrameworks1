@@ -4,7 +4,7 @@ const { json, urlencoded } = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const { createEngine } = require('express-react-views');
+
 
 let app = express();
 let rotaView = require('./routes/routeView');
@@ -32,10 +32,7 @@ mongoose.connect(`mongodb+srv://${process.env.USUARIO}:${process.env.SENHA}@clus
 mongoose.Promise = global.Promise;
 
 
-app.set('views', __dirname+'/views');
-app.set('view engine', 'jsx');
-
-app.engine('jsx', createEngine());
+app.set('view engine', 'pug');
 
 app.use(json());
 app.use(urlencoded());
@@ -53,8 +50,8 @@ app.use(cors({
     credentials: true
 }));
 app.use('/static', express.static(__dirname+'/public'));
-app.use('/', rotaView);
 app.use('/tipo/', rotaTipoDeUsuario);
+app.use('/', rotaView);
 
 app.listen(process.env.PORT, () => {
     console.log(`Local: http://localhost:${process.env.PORT}/`);

@@ -7,10 +7,11 @@ const PacotesSchema = new Schema({
     nome: String,
     versao: String,
     descricao: String, 
+    imagem: Array,
     comandoInstalar: String,
     comandoAtualizar: String,
     comandoApagar: String,
-    categoria: [
+    categorias: [
         {type: mongoose.Schema.Types.ObjectId, ref: 'Categorias'}
     ]
 }, {

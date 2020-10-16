@@ -1,40 +1,56 @@
 const Tipos =  require('../model/Tipos');
 
-exports.listar = (res) => {
-    Tipos.find({}, (error, tipos) => {
-        if(error) res.render('Tipo/ErroTipo', {error});
-        res.render('Tipo/ListarTipos', {tipos});
+exports.formCadastrar = (req, res, next) => {
+    res.render('tipo/formCadastrar')
+}
+exports.formAlterar = (req, res, next) => {
+    Tipos.find({}, (err, tipo) => {
+        if(err) res.redirect(`/erro?erro=${erro}`);
+        res.render('tipo/formAlterar', {tipo});
+    });
+}
+exports.formApagar = (req, res, next) => {
+    Tipos.find({}, (err, tipo) => {
+        if(err) res.redirect(`/erro?erro=${erro}`);
+        res.render('tipo/formApagar', {tipo});
     });
 }
 
-exports.inserir = (res, tipo) => {
-    let newTipo = new Tipos(tipo);
+exports.formListar = (req, res, next) => {
+    Tipos.find({}, (err, tipo) => {
+        if(err) res.redirect(`/erro?erro=${erro}`);
+        res.render('tipo/formListar', {tipo});
+    });
+}
+
+
+exports.inserir = (req, res, next) => {
+    let newTipo = new Tipos(req.body);
     newTipo.save((err, tipo) => {
-        if(err) res.render('Tipo/ErroTipo', {error});
-        res.render('Tipo/InserirTipo', {tipo});
+        if(err) res.redirect(`/erro?erro=${erro}`);
+        res.render('tipo/components/PosCadastro', {tipo});
     });
 }
 
-exports.atualizar = (id, tipo) => {
-    Tipos.findOneAndUpdate({_id: id}, tipo, {new : true}, (error, tipo) => {
-        if(error) return error;
-        return tipo;
+exports.alterar = (req, res, next) => {
+    Tipos.findOneAndUpdate({_id: req.params.id}, req.body, {new : true}, (err, tipo) => {
+        if(err) res.send(err);
+        res.send(tipo);
     });
 }
 
-exports.apagar = (id) => {
-    Tipos.findOneAndDelete({_id: id}, (error, tipo) =>{
-        if(error) return error;
-        return tipo;
+exports.apagar = (req, res, next) => {
+    Tipos.findOneAndDelete({_id: req.params.id}, (error, tipo) =>{
+        if(error) res.send(error);
+        res.send(tipo);
     });
 }
 
-exports.buscarPorId = (id) => {
-    Tipos.findById({_id: id}, (error, tipo) => {
-        if(error) res.render('Tipo/ErroTipo', {error});
-        res.render('Tipo/ListarTipoPorID', {tipo});
-    });
-}
+
+
+
+
+
 
 exports.procurar  = (res, query) => {
     if(query && query.id){

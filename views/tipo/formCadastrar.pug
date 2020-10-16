@@ -1,0 +1,22 @@
+doctype html
+html(lang="pt-br")
+    head
+        title Cadastrar Tipo de Usuário
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="/static/hcw.min.css")
+    body
+        header.padding-16.light-blue
+            h1.text-center Cadastrar
+        
+        section.margin-10.light-gray
+            div.card
+                h3.padding-16.light-blue.text-center Formulário de cadastro de novos usuários
+                div.padding-16
+                    form(method="post" action="/tipo/")
+                        label(for="tipo") Tipo de usuário:
+                        input(type="text", name="tipo", id="tipo", class="input white border-bottom-blue-focus", placeholder="Digite o tipo de usuário")
+                        br
+                        input(type="submit", class="btn btn-block green" value="Cadastrar")
+
+
+    

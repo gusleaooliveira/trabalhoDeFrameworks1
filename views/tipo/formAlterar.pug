@@ -1,0 +1,28 @@
+doctype html
+html(lang="pt-br")
+    head
+        title Alterar Tipo de Usuário
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="/static/hcw.min.css")
+        script(src="/static/formulario.js")
+    body
+        header.padding-16.blue
+            h1.text-center Alterar
+        
+        section.margin-10.light-gray
+            div.card
+                h3.padding-16.blue.text-center Formulário de alterar  tipo de novos usuários
+                div.padding-16
+                    form(method="post", action="/tipo/", onsubmit="return bloquear()")
+                        label(for="id") Selecione qual deseja alterar:
+                        select(id="id", name="id", class="input white border-bottom-blue-focus")
+                            each item in tipo
+                                option(value=item.id) #{item.tipo} 
+
+                        label(for="tipo") Tipo de usuário:
+                        input(type="text", name="tipo", id="tipo", class="input white border-bottom-blue-focus", placeholder="Digite o tipo de usuário")
+                        br
+                        input(type="submit", class="btn btn-block green", onclick="enviar('PUT')", value="Cadastrar")
+
+
+    
