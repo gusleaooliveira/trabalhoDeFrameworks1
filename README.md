@@ -37,12 +37,12 @@ Será criado uma loja de aplicativos voltado para linux, onde:
         - [ ] View de login
             - [ ] View de login
             - [ ] View de logout
-        - [ ] View de tipo
+        - [x] View de tipo
             - [x] View de cadastro    tipo de usuário
-            - [] View de listagem    tipo de usuário
-            - [] View de listagem de tipo de usuário
-            - [ ] View de alteração   tipo de usuário
-            - [ ] View de apagar      tipo de usuário
+            - [x] View de listagem    tipo de usuário
+            - [x] View de listagem de tipo de usuário
+            - [x] View de alteração   tipo de usuário
+            - [x] View de apagar      tipo de usuário
         - [ ] View de usuário
             - [ ] View de cadastro  usuário
             - [ ] View de listagem  usuário
@@ -62,7 +62,7 @@ Será criado uma loja de aplicativos voltado para linux, onde:
     - [ ] Montar as rotas
         - [ ] Rota de view
         - [ ] Rota de login
-        - [ ] Rota de tipo de usuário
+        - [x] Rota de tipo de usuário
         - [ ] Rota de usuário
         - [ ] Rota de categoria
         - [ ] Rota de pacotes

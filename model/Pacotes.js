@@ -7,7 +7,6 @@ const PacotesSchema = new Schema({
     nome: String,
     versao: String,
     descricao: String, 
-    imagem: Array,
     comandoInstalar: String,
     comandoAtualizar: String,
     comandoApagar: String,

@@ -28,7 +28,7 @@ exports.inserir = (req, res, next) => {
     let newTipo = new Tipos(req.body);
     newTipo.save((err, tipo) => {
         if(err) res.redirect(`/erro?erro=${erro}`);
-        res.render('tipo/components/PosCadastro', {tipo});
+        res.send({tipo});
     });
 }
 

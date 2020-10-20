@@ -6,13 +6,13 @@ html(lang="pt-br")
         link(rel="stylesheet", href="/static/hcw.min.css")
     body
         header.padding-16.light-blue
-            h1.text-center Cadastrar
+            h1.text-center Cadastrar tipo de usuário
         
         section.margin-10.light-gray
             div.card
                 h3.padding-16.light-blue.text-center Formulário de cadastro de novos usuários
                 div.padding-16
-                    form(method="post" action="/tipo/")
+                    form(method="post", id="tipoCadastrar", action="/tipo/")
                         label(for="tipo") Tipo de usuário:
                         input(type="text", name="tipo", id="tipo", class="input white border-bottom-blue-focus", placeholder="Digite o tipo de usuário")
                         br

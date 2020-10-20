@@ -1,58 +1,35 @@
 const Usuarios = require('../model/Usuario');
+const Tipos = require('../model/Tipos');
 const bcrypt = require('bcrypt');
 const salto = bcrypt.genSalt(13);
 
-exports.listar = () => {
-    Usuarios.find({}, (error, usuarios) => {
-        if(error)return error;
-        return usuarios;
+exports.formCadastrar = (req, res, next) => {
+    Tipos.find({}, (erro, tipos) => {
+        if(erro)  res.redirect(`/erro?erro=${erro}`);
+        res.render('usuario/formCadastrar', {tipos});
     })
+        
 }
 
-exports.inserir = (usuario) => {
-    if(usuario.senha){
-        let senha = usuario.senha;
-        bcrypt.genSalt(salto, (error, salt) => {
-            bcrypt.hash(senha, salt, (error, hash) => {
+exports.inserir = (req, res, next) => {
+    let usuario = req.body;
+    let senha = req.body.senha;
+    if(req.body.senha){
+        bcrypt.genSalt(salto, function(err, salt) {
+            bcrypt.hash(senha, salt, function(err, hash) {
                 usuario['senha'] = hash;
             });
         });
     }
     let newUsuario = new Usuarios(usuario);
-    newUsuario.save((error, usuario) => {
-        if(error)return error;
-        return usuario;
-    });
+    newUsuario.save((err, usuario) => {
+        if(err){
+            res.status(400).send(err);
+        }
+        res.status(201).send(usuario);
+    })
 }
 
-exports.atualizar = (id, usuario) => {
-    if(usuario.senha){
-        let senha = usuario.senha;
-        bcrypt.genSalt(salto, (error, salt) => {
-            bcrypt.hash(senha, salt, (error, salt) => {
-                usuario['senha'] = hash;
-            });
-        });
-    }
-    Usuarios.findOneAndUpdate({_id: id}, usuario, {new : true}, (error, usuario) => {
-        if(error)return error;
-        return usuario;
-    });
-}
-
-exports.apagar = (id) => {
-    Usuarios.findByIdAndDelete({_id: id}, (error, usuario) => {
-        if(error) return error;
-        return usuario; 
-    });
-}
-
-exports.buscarPorId = (id) => {
-    Usuarios.findById({_id: id}, (error, usuario) => {
-        if(error)return error;
-        return usuario;
-    });
-}
 
 exports.buscar = (query) => {
     if(query && query.tipo) {
@@ -81,4 +58,5 @@ exports.buscar = (query) => {
             })
         });
     }
-}
+
+}}

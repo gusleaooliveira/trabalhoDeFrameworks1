@@ -1,0 +1,43 @@
+doctype html
+html(lang="pt-br")
+    head
+        title Cadastro de usuário
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="/static/hcw.min.css")
+        script(src="/static/formulario.js")
+    body
+        header.padding-16.light-blue
+            h1.text-center Cadastrar  Usuário
+
+        section.margin-10.light-gray
+            div.card
+                h3.padding-16.light-blue.text-center Formulário para cadastro de novos usuários
+                div.padding-16
+                    form(method="post", action="/tipo/", id="usuarioCadastrar", onsubmit="return bloquear()")
+                        div.grid.column-2
+                            div
+                                label(for="nome") Nome:
+                                input(type="text", name="nome", id="nome", class="input white border-bottom-blue-focus", placeholder="Digite seu nome")
+                            
+                            div
+                                label(for="sobrenome") Sobrenome:
+                                input(type="text", name="sobrenome", id="sobrenome", class="input white border-bottom-blue-focus", placeholder="Digite seu sobrenome")
+                        
+                        label(for="tipo") Tipo de usuário:
+                        select(id="tipo", name="tipo", class="input white border-bottom-blue-focus")
+                            each item in tipos
+                                option(value=item.id) #{item.tipo}
+
+                        label(for="email") Email:
+                        input(type="email", name="email", id="email", class="input white border-bottom-blue-focus", placeholder="Digite seu email")
+                        
+
+                        label(for="senha") Senha:
+                        input(type="password", name="senha", id="senha", class="input white border-bottom-blue-focus", placeholder="Digite sua senha")
+                        
+                        label(for="senhaRepetida") Redigite a Senha:
+                        input(type="password", name="senhaRepetida", id="senhaRepetida", class="input white border-bottom-blue-focus", placeholder="Digite novamente a senha")
+                        
+                        
+                        
+                        input(type="submit", class="btn btn-block  green", onclick="testarSenha()", value="Cadastrar")

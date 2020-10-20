@@ -10,7 +10,7 @@ let app = express();
 let rotaView = require('./routes/routeView');
 // let rotaLogin = require('./routes/routeLogin');
 let rotaTipoDeUsuario = require('./routes/routeTipo');
-// let rotaUsuario = require('./routes/routeUsuario');
+let rotaUsuario = require('./routes/routeUsuario');
 // let rotaCategoria = require('./routes/routeCategoria');
 // let rotaPacote = require('./routes/routePacote');
 
@@ -51,6 +51,7 @@ app.use(cors({
 }));
 app.use('/static', express.static(__dirname+'/public'));
 app.use('/tipo/', rotaTipoDeUsuario);
+app.use('/usuario/', rotaUsuario)
 app.use('/', rotaView);
 
 app.listen(process.env.PORT, () => {

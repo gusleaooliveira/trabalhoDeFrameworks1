@@ -1,0 +1,22 @@
+doctype html
+html(lang="pt-br")
+    head
+        title Cadastrar categorias
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="/static/hcw.min.css")
+    body
+        header.padding-16.light-blue
+            h1.text-center Cadastrar categorias
+        
+        section.margin-10.light-gray
+            div.card
+                h3.padding-16.light-blue.text-center Formulário de cadastro de novas categorias
+                div.padding-16
+                    form(method="post", id="categoriaCadastrar", action="/tipo/")
+                        label(for="categoria") Categoria:
+                        input(type="text", name="categoria", id="categoria", class="input white border-bottom-blue-focus", placeholder="Digite a nova categoria")
+                        br
+                        input(type="submit", class="btn btn-block green", onclick="enviar('post')" value="Cadastrar")
+
+
+    
