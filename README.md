@@ -33,10 +33,10 @@ Será criado uma loja de aplicativos voltado para linux, onde:
     - [x] Montar servidor básico
         - [x] Configurações do mongoose
         - [x] Configurações do react-view
-    - [ ] Montar as views
-        - [ ] View de login
-            - [ ] View de login
-            - [ ] View de logout
+    - [x] Montar as views
+        - [x] View de login
+            - [x] View de login
+            - [x] View de logout
         - [x] View de tipo
             - [x] View de cadastro    tipo de usuário
             - [x] View de listagem    tipo de usuário
@@ -61,9 +61,9 @@ Será criado uma loja de aplicativos voltado para linux, onde:
         - [ ] View loja de aplicativos
     - [ ] Montar as rotas
         - [ ] Rota de view
-        - [ ] Rota de login
+        - [x] Rota de login
         - [x] Rota de tipo de usuário
-        - [ ] Rota de usuário
+        - [x] Rota de usuário
         - [x] Rota de categoria
         - [x] Rota de pacotes
     - [ ] Montar os controllers
@@ -80,8 +80,8 @@ Será criado uma loja de aplicativos voltado para linux, onde:
         - [x] Model de pacotes  
 - [ ] Segurança
     - [ ] Criptografar senha
-    - [ ] Usar jwt **TODO:** alterar futuramente caso necessário
-    - [ ] Usar cookies
-- [ ] Deploy
-    - [ ] Fazer o deploy para o atlas
-    - [ ] Fazer o deploy para o heroku
+    - [x] Usar jwt **TODO:** alterar futuramente caso necessário
+    - [x] Usar cookies
+- [x] Deploy
+    - [x] Fazer o deploy para o atlas
+    - [x] Fazer o deploy para o heroku
