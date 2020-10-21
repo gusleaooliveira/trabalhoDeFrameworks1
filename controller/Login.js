@@ -1,40 +1,50 @@
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser')
 const Usuarios = require('../model/Usuario');
-const cookie = require('cookie-parser')
+const Tipos = require('../model/Tipos');
 
 exports.formLogin = (req, res, next) => {
-    if(!req.cookies){
-        Object.entries(req.cookies).forEach((values, index) => {
-            console.log(`   ${index}:${values}`);
-        })
-        res.render('login/login');                
-    }
-    else{
-        Object.entries(req.cookies).forEach((values, index) => {
-            console.log(`   ${index}:${values}`);
-        })
-        console.log(req.originalUrl);
-        if(req.originalUrl == '/usuario/cadastrar'){ res.render('./usuario/formCadastrar'); }
-        if(req.originalUrl == '/usuario/listar'){ res.render('./usuario/formListar'); }
-        if(req.originalUrl == '/usuario/alterar'){ res.render('./usuario/formAlterar'); }
-        if(req.originalUrl == '/usuario/apagar'){ res.render('./usuario/formApagar'); }
-    }
+        res.render('login/login')
 }
 
 
+exports.verificaJwt = (req, res, next) => {
+    let token = null;
+    if(req.cookies.token){token = req.cookie.token;}
+    else if(req.signedCookies.token){ token = req.signedCookies.token; }
+    else { 
+        if(req.headers["x-access-token"]){ token = req.headers['x-access-token'];}
+        else { res.redirect(`/erro?erro='Nenhum token fornecido!'`); }
+    }
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+        if(err)return res.redirect(`/erro?erro='Falha ao autenticar o token!'`)
+        
+        req.userId = decoded.id;
+        next()
+    })
+}
+
 exports.login = (req, res, next) => {
-    if(!req.cookie ){
-        Usuarios.find({ email: req.body.email, senha: req.body.senha }, (erro, usuario) => {
-            if(erro) res.redirect(`/erro?erro=${erro}`);
+    console.log(req.cookies.token == undefined || req.signedCookies.token == undefined);
+    if(req.cookies.token == undefined || req.signedCookies.token == undefined){
+        let email = req.body.email;
+        let senha = req.body.senha;
+
+
+        Usuarios.find({
+            email: email,
+            senha: senha
+        }, (err, usuario) => {
+            if(err){res.redirect(`/erro?erro=${err}`);}
+
             let token = jwt.sign({usuario}, process.env.SECRET, {expiresIn: 300});
-            res.cookie('token', token).send({jwt: token});
-        });
+            res.cookie('token', token, {signed: true}).render('index');
+        })
     }
 }
 
 exports.logout = (req, res, next) => {
-    if(req.cookies ){
-        res.clearCookie('token').send({msg: "OK"});
-        
+    if(req.cookies || req.signedCookies){
+        res.clearCookies('token').render('index');
     }
 }

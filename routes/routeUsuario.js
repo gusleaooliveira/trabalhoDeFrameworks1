@@ -3,15 +3,15 @@ const router = Router();
 const controller =  require('../controller/Usuario');
 const controllerLogin = require('../controller/Login')
 
-router.get('/cadastrar', controllerLogin.formLogin, controller.formCadastrar);
-router.get('/listar',  controllerLogin.formLogin, controller.formListar);
-router.get('/alterar',  controllerLogin.formLogin,  controller.formAlterar);
-router.get('/apagar',  controllerLogin.formLogin, controller.formApagar);
+router.get('/cadastrar', controllerLogin.verificaJwt, controller.formCadastrar);
+router.get('/listar',  controllerLogin.verificaJwt, controller.formListar);
+router.get('/alterar',  controllerLogin.verificaJwt,  controller.formAlterar);
+router.get('/apagar',  controllerLogin.verificaJwt, controller.formApagar);
 
-router.get('/:id', controller.listarPorId);
-router.get('/', controller.listar);
-router.post('/', controller.inserir);
-router.put('/:id', controller.alterar);
-router.delete('/:id', controller.apagar);
+router.get('/:id',  controllerLogin.verificaJwt,  controller.listarPorId);
+router.get('/',  controllerLogin.verificaJwt,  controller.listar);
+router.post('/',   controllerLogin.verificaJwt, controller.inserir);
+router.put('/:id',   controllerLogin.verificaJwt, controller.alterar);
+router.delete('/:id',   controllerLogin.verificaJwt, controller.apagar);
  
 module.exports = router;
