@@ -7,13 +7,13 @@ html(lang="pt-br")
         script(src="/static/formulario.js")
     body
         header.padding-16.raisin-black
-            h1.text-center Alterar
+            h1.text-center Alterar Tipo de Usuário
         
         include menu.pug
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.raisin-black.text-center Formulário de alterar  tipo de novos usuários
+                h3.padding-16.raisin-black.text-center Formulário para alterar  tipo de  usuários
                 div.padding-16
                     form(method="post", id="formAlterar", action="/tipo/", onsubmit="return bloquear()")
                         label(for="id") Selecione qual deseja alterar:
@@ -26,5 +26,6 @@ html(lang="pt-br")
                         br
                         input(type="submit", class="btn btn-block orange", onclick="enviar('PUT', 'tipo')", value="Alterar")
 
+        include ../footer.pug
 
     

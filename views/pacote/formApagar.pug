@@ -13,7 +13,7 @@ html(lang="pt-br")
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.raisin-black.text-center Formulário de apagar  categoria
+                h3.padding-16.raisin-black.text-center Formulário para apagar  categoria
                 div.padding-16
                     form(method="post", action="/pacote/", onsubmit="return bloquear()")
                         label(for="id") Selecione qual deseja apagar:
@@ -25,4 +25,4 @@ html(lang="pt-br")
                         input(type="submit", class="btn btn-block red", onclick="enviar('DELETE', 'pacote')", value="Apagar")
 
 
-    
+        include ../footer.pug

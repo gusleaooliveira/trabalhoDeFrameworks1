@@ -12,7 +12,7 @@ html(lang="pt-br")
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.raisin-black.text-center Formulário de cadastro
+                h3.padding-16.raisin-black.text-center Cadastro de categoria
                 div.padding-16
                     form(method="post", id="categoriaCadastrar", action="/categoria/", onsubmit="return bloquear()")
                         label(for="categoria") Categoria:
@@ -20,5 +20,6 @@ html(lang="pt-br")
                         br
                         input(type="submit", class="btn btn-block green", onclick="enviar('POST', 'categoria')", value="Cadastrar")
 
+        include ../footer.pug
 
     

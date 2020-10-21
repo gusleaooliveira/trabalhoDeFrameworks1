@@ -6,18 +6,19 @@ html(lang="pt-br")
         link(rel="stylesheet", href="/static/hcw.min.css")
     body
         header.padding-16.raisin-black
-            h1.text-center Listar
+            h1.text-center Listar Tipo de Usuário
         
         include menu.pug
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.raisin-black.text-center Formulário de listar  tipo de novos usuários
+                h3.padding-16.raisin-black.text-center Lista de tipo de usuários
                 div.padding-16
                     ul
                         each item in tipo
                             li #{item.tipo} 
 
+        include ../footer.pug
 
 
     

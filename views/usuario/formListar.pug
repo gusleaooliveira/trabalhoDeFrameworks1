@@ -12,10 +12,11 @@ html(lang="pt-br")
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.raisin-black.text-center Formulário de listar  usuários
+                h3.padding-16.raisin-black.text-center Lista de usuários:
                 div.padding-16
                     ul
                         each item in usuario
                             li #{item.nome} 
 
+        include ../footer.pug
 

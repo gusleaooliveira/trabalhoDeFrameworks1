@@ -27,5 +27,6 @@ html(lang="pt-br")
                                     h4 #{item.nome}
                                 each cat in item.categorias
                                     a(href="/loja/categoria/"+cat.id, class="text-center text-gray text-raisin-black-hover") #{cat.categoria}
-                               
+        
+        include ../footer.pug
                                     

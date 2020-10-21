@@ -7,13 +7,13 @@ html(lang="pt-br")
         script(src="/static/formulario.js")
     body
         header.padding-16.raisin-black
-            h1.text-center Apagar
+            h1.text-center Apagar  Tipo de Usuário
         
         include menu.pug
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.raisin-black.text-center Formulário de apagar  tipo de novos usuários
+                h3.padding-16.raisin-black.text-center Formulário para apagar  tipo de  usuários
                 div.padding-16
                     form(method="post", action="/tipo/", onsubmit="return bloquear()")
                         label(for="id") Selecione qual deseja apagar:
@@ -24,5 +24,6 @@ html(lang="pt-br")
                         br
                         input(type="submit", class="btn btn-block red", onclick="enviar('DELETE', 'tipo')", value="Apagar")
 
+        include ../footer.pug
 
     

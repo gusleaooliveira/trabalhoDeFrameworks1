@@ -1,19 +1,19 @@
 doctype html
 html(lang="pt-br")
     head
-        title Alterar categoria
+        title Alterar Usuário
         meta(charset="utf-8")
         link(rel="stylesheet", href="/static/hcw.min.css")
         script(src="/static/formulario.js")
     body
         header.padding-16.raisin-black
-            h1.text-center Alterar
+            h1.text-center Alterar Usuário
         
         include menu.pug
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.raisin-black.text-center Formulário de alterar  categoria
+                h3.padding-16.raisin-black.text-center Formulário para atualizar usuário
                 div.padding-16
                     form(method="post", id="formAlterar", action="/pacote/", onsubmit="return bloquear()")
                         label(for="id") Selecione qual deseja alterar:
@@ -51,7 +51,7 @@ html(lang="pt-br")
                         br
                         input(type="submit", class="btn btn-block orange", onclick="enviar('PUT', 'usuario')", value="Alterar")
 
-                
+        include ../footer.pug
                 
 
     

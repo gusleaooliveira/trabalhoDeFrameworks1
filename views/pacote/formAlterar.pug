@@ -13,7 +13,7 @@ html(lang="pt-br")
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.raisin-black.text-center Formulário de alterar  pacote
+                h3.padding-16.raisin-black.text-center Formulário para alterar  pacote
                 div.padding-16
                     form(method="post", id="formAlterar", action="/pacote/", onsubmit="return bloquear()")
                         label(for="id") Selecione qual deseja alterar:
@@ -47,7 +47,7 @@ html(lang="pt-br")
                         br
                         input(type="submit", class="btn btn-block orange", onclick="enviar('PUT', 'pacote')", value="Alterar")
 
-                
+        include ../footer.pug    
                 
 
     
