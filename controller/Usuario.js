@@ -1,12 +1,19 @@
 const Usuarios =  require('../model/Usuario');
+const Tipos = require('../model/Tipos') 
 
 exports.formCadastrar = (req, res, next) => {
-    res.render('usuario/formCadastrar')
+    Tipos.find({}, (err, tipo) => {
+        if(err) res.redirect(`/erro?erro=${erro}`);
+        res.render('usuario/formCadastrar', {tipo})
+    });
 }
 exports.formAlterar = (req, res, next) => {
     Usuarios.find({}, (err, usuario) => {
-        if(err) res.redirect(`/erro?erro=${erro}`);
-        res.render('usuario/formAlterar', {usuario});
+        if(err) res.redirect(`/erro?erro=${err}`);
+        Tipos.find({}, (err, tipo) => {
+            if(err) res.redirect(`/erro?erro=${err}`);
+            res.render('usuario/formAlterar', {usuario, tipo});
+        });
     });
 }
 exports.formApagar = (req, res, next) => {
@@ -23,6 +30,18 @@ exports.formListar = (req, res, next) => {
     });
 }
 
+exports.listarPorId = (req, res, next) => {
+    Usuarios.findById({_id: req.params.id}, (err, usuario) => {
+        if(err) res.redirect(`/erro?erro=${err}`);
+        res.send({usuario});
+    });
+}
+exports.listar = (req, res, next) => {
+    Usuarios.find({}, (err, usuario) => {
+        if(err) res.redirect(`/erro?erro=${err}`);
+        res.send({usuario});
+    });
+}
 
 exports.inserir = (req, res, next) => {
     let newUsuario = new Usuarios(req.body);

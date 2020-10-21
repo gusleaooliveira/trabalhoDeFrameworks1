@@ -48,24 +48,24 @@ Será criado uma loja de aplicativos voltado para linux, onde:
             - [ ] View de listagem  usuário
             - [ ] View de alteração usuário
             - [ ] View de apagar    usuário
-        - [ ] View de categoria
-            - [ ] View de cadastro   categoria  
-            - [ ] View de listagem   categoria
-            - [ ] View de alteração  categoria
-            - [ ] View de apagar     categoria
-        - [ ] View de pacote
-            - [ ] View de cadastro   pacote  
-            - [ ] View de listagem   pacote
-            - [ ] View de alteração  pacote
-            - [ ] View de apagar     pacote
+        - [x] View de categoria
+            - [x] View de cadastro   categoria  
+            - [x] View de listagem   categoria
+            - [x] View de alteração  categoria
+            - [x] View de apagar     categoria
+        - [x] View de pacote
+            - [x] View de cadastro   pacote  
+            - [x] View de listagem   pacote
+            - [x] View de alteração  pacote
+            - [x] View de apagar     pacote
         - [ ] View loja de aplicativos
     - [ ] Montar as rotas
         - [ ] Rota de view
         - [ ] Rota de login
         - [x] Rota de tipo de usuário
         - [ ] Rota de usuário
-        - [ ] Rota de categoria
-        - [ ] Rota de pacotes
+        - [x] Rota de categoria
+        - [x] Rota de pacotes
     - [ ] Montar os controllers
         - [ ] Controller de view
         - [x] Controller de login **TODO:** alterar futuramente caso necessário
@@ -79,8 +79,8 @@ Será criado uma loja de aplicativos voltado para linux, onde:
         - [x] Model de categoria
         - [x] Model de pacotes  
 - [ ] Segurança
-    - [x] Criptografar senha
-    - [x] Usar jwt **TODO:** alterar futuramente caso necessário
+    - [ ] Criptografar senha
+    - [ ] Usar jwt **TODO:** alterar futuramente caso necessário
     - [ ] Usar cookies
 - [ ] Deploy
     - [ ] Fazer o deploy para o atlas

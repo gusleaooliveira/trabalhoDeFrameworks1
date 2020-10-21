@@ -1,5 +1,6 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
+const Tipo = require('../model/Tipos');
 
 mongoose.Promise = global.Promise;
 

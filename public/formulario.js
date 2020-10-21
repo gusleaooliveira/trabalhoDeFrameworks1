@@ -1,22 +1,25 @@
 function bloquear(){  return false;  }
+function testarSenha() {
+    let senha = document.querySelector("#senha").value;
+    let senhaRepetida = document.querySelector('#senhaRepetida').value;
+    let msg = document.querySelector("#msg");
+
+    if(senha == senhaRepetida){
+        console.log('senhas iguais');
+        msg.classList.add('display-none');
+    }
+    else {
+        console.log('senhas diferentes');
+        msg.classList.remove('display-none');
+    }
+
+}
 function getByID(id){ return document.querySelector(id).value; }
 function inserirPorId(id, valor){
     document.querySelector(id).value = valor;
 }
 function verificar(msg){ return confirm(msg); }
-function testarSenha() {
-    let senha = document.querySelector("#senha").value;
-    let senhaRepetida = document.querySelector('#senhaRepetida').value;
 
-    if(senha == senhaRepetida){
-        alert('Senhas iguais');
-    }
-    else {
-        alert('Redigite a senha! \nSenhas diferentes!')
-    }
-
-    enviar('post');
-}
 
 
 function executar(metodo, cabecalho, url, json){
@@ -54,15 +57,25 @@ function carregar(local, metodo){
     fetch(url, {method: metodo, mode: 'cors', cache: 'default'})
         .then((resp) => { 
             resp.text().then((respo) => { 
-                let resposta = JSON.parse(respo)['pacote'];
-                
-                inserirPorId('#nome', resposta.nome);
-                inserirPorId('#versao', resposta.versao);
-                inserirPorId('#descricao', resposta.descricao);
-                inserirPorId('#comandoInstalar', resposta.comandoInstalar);
-                inserirPorId('#comandoAtualizar', resposta.comandoAtualizar);
-                inserirPorId('#comandoApagar', resposta.comandoApagar);
-                
+                if(local == 'pacote'){
+                    let resposta = JSON.parse(respo)['pacote'];
+                    
+                    inserirPorId('#nome', resposta.nome);
+                    inserirPorId('#versao', resposta.versao);
+                    inserirPorId('#descricao', resposta.descricao);
+                    inserirPorId('#comandoInstalar', resposta.comandoInstalar);
+                    inserirPorId('#comandoAtualizar', resposta.comandoAtualizar);
+                    inserirPorId('#comandoApagar', resposta.comandoApagar);   
+                }
+                else if(local == 'usuario'){
+                    let resposta = JSON.parse(respo)['usuario'];
+
+                    inserirPorId('#nome', resposta.nome);
+                    inserirPorId('#sobrenome', resposta.sobrenome);
+                    inserirPorId('#email', resposta.email);
+                    inserirPorId('#senha', resposta.senha);
+                    inserirPorId('#senhaRepetida', resposta.senha);  
+                }
             })
         })
         .catch(err => console.warn(err));

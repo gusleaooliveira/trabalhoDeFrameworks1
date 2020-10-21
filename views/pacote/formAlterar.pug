@@ -1,7 +1,7 @@
 doctype html
 html(lang="pt-br")
     head
-        title Alterar categoria
+        title Alterar pacote
         meta(charset="utf-8")
         link(rel="stylesheet", href="/static/hcw.min.css")
         script(src="/static/formulario.js")
@@ -11,9 +11,9 @@ html(lang="pt-br")
         
         section.margin-10.light-gray
             div.card
-                h3.padding-16.blue.text-center Formulário de alterar  categoria
+                h3.padding-16.blue.text-center Formulário de alterar  pacote
                 div.padding-16
-                    form(method="post", id="formAlterar", action="/categoria/", onsubmit="return bloquear()")
+                    form(method="post", id="formAlterar", action="/pacote/", onsubmit="return bloquear()")
                         label(for="id") Selecione qual deseja alterar:
                         select(id="id", name="id", onchange="carregar('pacote', 'GET')", class="input white border-bottom-blue-focus")
                             each item in pacote
