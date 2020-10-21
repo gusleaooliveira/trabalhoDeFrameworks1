@@ -1,0 +1,20 @@
+.img-app {
+    min-height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.grid-search {
+    display: flex;
+}
+.col-1 {
+    flex-grow: 1;
+}
+.col-10 {
+    flex-grow: 10;
+}
+.alinhar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

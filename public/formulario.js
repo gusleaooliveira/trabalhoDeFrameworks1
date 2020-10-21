@@ -98,10 +98,8 @@ function login(local, metodo){
 
     if(verificar('Deseja continuar?')){
         fetch(url, { method: metodo, headers: cabecalho, body: json })
-            .then((res) => {
-                alert('Logado com sucesso!');
-            })
-            .catch((err) => { alert('Ocorreu um erro ao logar! ');  });
+            .then((res) => {alert('Logado com sucesso!'); window.location.reload(false);})
+            .catch((err) => { alert('Ocorreu um erro ao logar! '); window.location.reload(false); });
     }
     else{
         alert('Você cancelou o salvamento!');

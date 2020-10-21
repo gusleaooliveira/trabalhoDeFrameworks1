@@ -13,6 +13,7 @@ let rotaTipoDeUsuario = require('./routes/routeTipo');
 let rotaUsuario = require('./routes/routeUsuario');
 let rotaCategoria = require('./routes/routeCategoria');
 let rotaPacote = require('./routes/routePacote');
+let rotaLoja = require('./routes/routeLoja');
 
 mongoose.connect(`mongodb+srv://${process.env.USUARIO}:${process.env.SENHA}@cluster0.sl4fb.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
@@ -66,6 +67,7 @@ app.use('/tipo/', rotaTipoDeUsuario);
 app.use('/usuario/', rotaUsuario)
 app.use('/categoria/', rotaCategoria)
 app.use('/pacote/', rotaPacote)
+app.use('/loja/', rotaLoja)
 app.use('/', rotaView);
 
 app.listen(process.env.PORT, () => {
