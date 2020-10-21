@@ -46,7 +46,16 @@ exports.listar = (req, res, next) => {
 }
 
 exports.inserir = (req, res, next) => {
-    let newUsuario = new Usuarios(req.body);
+    let usuario = req.body;
+    let senha = req.body.senha;
+    if(req.body.senha){
+        bcrypt.genSalt(salto, function(err, salt) {
+            bcrypt.hash(senha, salt, function(err, hash) {
+                usuario['senha']  = hash;
+            })
+        })
+    }
+    let newUsuario = new Usuarios(usuario);
     newUsuario.save((err, usuario) => {
         if(err) res.redirect(`/erro?erro=${erro}`);
         res.render('sucesso', {sucesso: usuario});
@@ -54,7 +63,17 @@ exports.inserir = (req, res, next) => {
 }
 
 exports.alterar = (req, res, next) => {
-    Usuarios.findOneAndUpdate({_id: req.params.id}, req.body, {new : true}, (err, usuario) => {
+    let id = req.params.id;
+    let updateUsuario = req.body;
+    let senha = req.body.senha;
+    if(req.body.senha){
+        bcrypt.genSalt(salto, function(err, salt) {
+            bcrypt.hash(senha, salt, function(err, hash) {
+                updateUsuario['senha']  = hash;
+            })
+        })
+    }
+    Usuarios.findOneAndUpdate({_id: id}, updateUsuario, {new : true}, (err, usuario) => {
         if(err) res.redirect(`/erro?erro=${erro}`);
         res.render('sucesso', {sucesso: usuario});
     });
