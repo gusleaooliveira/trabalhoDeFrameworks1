@@ -28,21 +28,21 @@ exports.inserir = (req, res, next) => {
     let newTipo = new Tipos(req.body);
     newTipo.save((err, tipo) => {
         if(err) res.redirect(`/erro?erro=${erro}`);
-        res.send({tipo});
+        res.render('sucesso', {sucesso: tipo});
     });
 }
 
 exports.alterar = (req, res, next) => {
     Tipos.findOneAndUpdate({_id: req.params.id}, req.body, {new : true}, (err, tipo) => {
         if(err) res.send(err);
-        res.send(tipo);
+        res.render('sucesso', {sucesso: tipo});
     });
 }
 
 exports.apagar = (req, res, next) => {
     Tipos.findOneAndDelete({_id: req.params.id}, (error, tipo) =>{
         if(error) res.send(error);
-        res.send(tipo);
+        res.render('sucesso', {sucesso: tipo});
     });
 }
 
@@ -51,14 +51,3 @@ exports.apagar = (req, res, next) => {
 
 
 
-
-exports.procurar  = (res, query) => {
-    if(query && query.id){
-        let paramTipo = query.tipo;
-        Tipos.find({ tipo: paramTipo }, (error, tipo) => {
-            if(error) res.render('Tipo/ErroTipo', {error});
-            res.render('Tipo/PesquisarTipo', {tipo});
-        })
-    }
-    
-}

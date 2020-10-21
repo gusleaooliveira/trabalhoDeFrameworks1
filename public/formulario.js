@@ -15,24 +15,47 @@ function testarSenha() {
     enviar('post');
 }
 
+function executar(metodo, cabecalho, url, json){
+    console.warn('método: ', metodo);
+    console.warn('cabecalho: ', cabecalho);
+    console.warn('url: ', url);
+    console.warn('json: ', json);
 
-function enviar(metodo){ 
+    if(verificar('Deseja continuar?')){
+        fetch(url, { method: metodo, headers: cabecalho, body: json })
+            .then((res) => { alert('Salvo com sucesso!'); window.location.reload(false); })
+            .catch((err) => { alert('Ocorreu um erro! '); window.location.reload(false); });
+    }
+    else{
+        alert('Você cancelou o salvamento!');
+    }
+}
+function executarOutro(url, metodo){
+    console.warn('método: ', metodo);
+    console.warn('url: ', url);
+    
+    if(verificar('Deseja continuar?')){
+        fetch(url, { method: metodo })
+            .then((res) => { alert('Apagado com sucesso!'); window.location.reload(false); })
+            .catch((err) => { alert('Ocorreu um erro!   '); window.location.reload(false); });
+    }  
+    else{
+        alert('Você cancelou o salvamento!');
+    }  
+}
+
+
+function enviar(metodo, formulario){ 
     let met = metodo.toLowerCase();
     let json =  null;
     let url = null;
     let cabecalho = { 'Content-Type': 'application/json' };
 
     if(met == 'post' || met == 'put'){
-        if(document.querySelector('#tipoCadastrar') != null){
-            if(met == 'post') url = `/tipo/`;
-            else url = `/tipo/${getByID('#id')}`;
-
-            json = JSON.stringify({'tipo': getByID('#tipo') });
+        if(formulario == 'tipo'){ 
+            json = JSON.stringify({'tipo': getByID('#tipo')});  
         }
-        else if(document.querySelector('#usuarioCadastrar') != null){
-            if(met == 'post') url = `/usuario/`;
-            else url = `/usuario/${getByID('#id')}`;
-
+        else if(formulario == 'usuario'){    
             json = JSON.stringify({
                 'nome': getByID('#nome'),
                 'sobrenome': getByID('#sobrenome'),
@@ -41,16 +64,10 @@ function enviar(metodo){
                 'tipo': getByID('#tipo')
             });
         }
-        else if(document.querySelector('#categoriaCadastrar') != null){
-            if(met == 'post') url = `/categoria/`;
-            else url = `/categoria/${getByID('#id')}`;
-
+        else if(formulario == 'categoria'){
             json = JSON.stringify({'categoria': getByID('#categoria') });
         }
-        else if(document.querySelector('#pacoteCadastrar') != null){
-            if(met == 'post') url = `/pacote/`;
-            else url = `/pacote/${getByID('#id')}`;
-
+        else if(formulario == 'pacote'){
             json = JSON.stringify({
                 'nome': getByID('#nome'),
                 'versao': getByID('#versao'),
@@ -61,27 +78,16 @@ function enviar(metodo){
                 'categorias': getByID('#categoria')
             });
         }
-        
-        if(verificar('Deseja continuar?')){
-            fetch(url, { method: metodo, headers: cabecalho, body: json })
-                .then((res) => { alert('Salvo com sucesso!'); window.location.reload(false); })
-                .catch((err) => { alert('Ocorreu um erro! '); window.location.reload(false); });
-        }
-        else{
-            alert('Você cancelou o salvamento!');
-        }
+
+        if(met == 'post') { url = `/${formulario}/`; }
+        else if(met == 'put') { url = `/${formulario}/${getByID('#id')}`; }
+
+        executar(metodo, cabecalho, url, json);
     }
     else if(met == 'delete'){
-        if(document.querySelector('#tipoApagar') != null) url = `/tipo/${getByID('#id')}`;
-        else if(document.querySelector('#usuarioApagar') != null) url = `/usuario/${getByID('#id')}`
-        else if(document.querySelector('#categoriaApagar') != null) url = `/categoria/${getByID('#id')}`
-        else if(document.querySelector('#pacoteApagar') != null) url = `/pacote/${getByID('#id')}`
+        url = `/tipo/${getByID('#id')}`;
         
-        if(verificar('Deseja continuar?')){
-            fetch(url, { method: metodo })
-                .then((res) => { alert('Apagado com sucesso!'); window.location.reload(false); })
-                .catch((err) => { alert('Ocorreu um erro!   '); window.location.reload(false); });
-        }       
+        executarOutro(url, metodo);
     }
 }
 

@@ -11,8 +11,8 @@ let rotaView = require('./routes/routeView');
 // let rotaLogin = require('./routes/routeLogin');
 let rotaTipoDeUsuario = require('./routes/routeTipo');
 let rotaUsuario = require('./routes/routeUsuario');
-// let rotaCategoria = require('./routes/routeCategoria');
-// let rotaPacote = require('./routes/routePacote');
+let rotaCategoria = require('./routes/routeCategoria');
+let rotaPacote = require('./routes/routePacote');
 
 mongoose.connect(`mongodb+srv://${process.env.USUARIO}:${process.env.SENHA}@cluster0.sl4fb.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
@@ -52,6 +52,8 @@ app.use(cors({
 app.use('/static', express.static(__dirname+'/public'));
 app.use('/tipo/', rotaTipoDeUsuario);
 app.use('/usuario/', rotaUsuario)
+app.use('/categoria/', rotaCategoria)
+app.use('/pacote/', rotaPacote)
 app.use('/', rotaView);
 
 app.listen(process.env.PORT, () => {

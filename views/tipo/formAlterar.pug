@@ -13,7 +13,7 @@ html(lang="pt-br")
             div.card
                 h3.padding-16.blue.text-center Formulário de alterar  tipo de novos usuários
                 div.padding-16
-                    form(method="post", action="/tipo/", onsubmit="return bloquear()")
+                    form(method="post", id="formAlterar", action="/tipo/", onsubmit="return bloquear()")
                         label(for="id") Selecione qual deseja alterar:
                         select(id="id", name="id", class="input white border-bottom-blue-focus")
                             each item in tipo
@@ -22,7 +22,7 @@ html(lang="pt-br")
                         label(for="tipo") Tipo de usuário:
                         input(type="text", name="tipo", id="tipo", class="input white border-bottom-blue-focus", placeholder="Digite o tipo de usuário")
                         br
-                        input(type="submit", class="btn btn-block green", onclick="enviar('PUT')", value="Cadastrar")
+                        input(type="submit", class="btn btn-block green", onclick="enviar('PUT', 'tipo')", value="Cadastrar")
 
 
     

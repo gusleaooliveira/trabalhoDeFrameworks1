@@ -1,55 +1,49 @@
 const Pacotes =  require('../model/Pacotes');
 
-exports.listar = () => {
-    Pacotes.find({}, (error, pacotes) => {
-        if(error) return error;
-        return pacotes;
+exports.formCadastrar = (req, res, next) => {
+    res.render('pacote/formCadastrar')
+}
+exports.formAlterar = (req, res, next) => {
+    Pacotes.find({}, (err, pacotes) => {
+        if(err) res.redirect(`/erro?erro=${erro}`);
+        res.render('pacote/formAlterar', {pacotes});
+    });
+}
+exports.formApagar = (req, res, next) => {
+    Pacotes.find({}, (err, pacotes) => {
+        if(err) res.redirect(`/erro?erro=${erro}`);
+        res.render('pacote/formApagar', {pacotes});
     });
 }
 
-exports.inserir = (pacote) => {
-    let newPacote =  new Pacotes(pacote);
-    newPacote.save((error, pacote) => {
-        if(error) return error;
-        return pacote;
-    });
-}
-
-exports.atualizar = (id, pacote) => {
-    Pacotes.findByIdAndUpdate({_id: id}, pacote, {new: true}, (error, pacote) => {
-        if(error) return error;
-        return pacote;
+exports.formListar = (req, res, next) => {
+    Pacotes.find({}, (err, pacotes) => {
+        if(err) res.redirect(`/erro?erro=${erro}`);
+        res.render('pacote/formListar', {pacotes});
     });
 }
 
 
-exports.apagar = (id) => {
-    Pacotes.findByIdAndDelete({_id: id}, (error, pacote) => {
-        if(error) return error;
-        return pacote;
+exports.inserir = (req, res, next) => {
+    let newPacotes = new Pacotes(req.body);
+    newPacotes.save((err, pacotes) => {
+        if(err) res.redirect(`/erro?erro=${erro}`);
+        res.send({pacotes});
     });
 }
 
-exports.buscarPorId = (id) => {
-    Pacotes.findById({ _id: id}, (error, pacote) => {
-        if(error) return error;
-        return pacote;
+exports.alterar = (req, res, next) => {
+    Pacotes.findOneAndUpdate({_id: req.params.id}, req.body, {new : true}, (err, pacotes) => {
+        if(err) res.send(err);
+        res.send(pacotes);
     });
 }
 
-exports.procurar = (query) => {
-    if(query && query.nome){
-        let paramNome = query.nome;
-        Pacotes.find({nome: paramNome}, (error, pacote) => {
-            if(error) return error;
-            return pacote;
-        });
-    }
-    if(query && query.categoriaId){
-        let paramCategoriaId = query.categoriaId;
-        Pacotes.find({categoria: paramCategoriaId}, (error, pacotes) => {
-            if(error) return error;
-            return pacotes;
-        });
-    }
+exports.apagar = (req, res, next) => {
+    Pacotes.findOneAndDelete({_id: req.params.id}, (error, pacotes) =>{
+        if(error) res.send(error);
+        res.send(pacotes);
+    });
 }
+
+
