@@ -29,7 +29,7 @@ Será criado uma loja de aplicativos voltado para linux, onde:
 ## Tarefas
 - [x] Inicializar o repositório
 - [x] Instalar as bibliotecas básicas
-- [ ] Estrutura do Servidor
+- [x] Estrutura do Servidor
     - [x] Montar servidor básico
         - [x] Configurações do mongoose
         - [x] Configurações do react-view
@@ -58,7 +58,7 @@ Será criado uma loja de aplicativos voltado para linux, onde:
             - [x] View de listagem   pacote
             - [x] View de alteração  pacote
             - [x] View de apagar     pacote
-        - [ ] View loja de aplicativos
+        - [x] View loja de aplicativos
     - [ ] Montar as rotas
         - [ ] Rota de view
         - [x] Rota de login
