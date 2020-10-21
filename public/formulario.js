@@ -1,5 +1,8 @@
 function bloquear(){  return false;  }
 function getByID(id){ return document.querySelector(id).value; }
+function inserirPorId(id, valor){
+    document.querySelector(id).value = valor;
+}
 function verificar(msg){ return confirm(msg); }
 function testarSenha() {
     let senha = document.querySelector("#senha").value;
@@ -14,6 +17,7 @@ function testarSenha() {
 
     enviar('post');
 }
+
 
 function executar(metodo, cabecalho, url, json){
     console.warn('método: ', metodo);
@@ -44,6 +48,26 @@ function executarOutro(url, metodo){
     }  
 }
 
+function carregar(local, metodo){
+    let url = `/${local}/${getByID('#id')}`;
+    
+    fetch(url, {method: metodo, mode: 'cors', cache: 'default'})
+        .then((resp) => { 
+            resp.text().then((respo) => { 
+                let resposta = JSON.parse(respo)['pacote'];
+                
+                inserirPorId('#nome', resposta.nome);
+                inserirPorId('#versao', resposta.versao);
+                inserirPorId('#descricao', resposta.descricao);
+                inserirPorId('#comandoInstalar', resposta.comandoInstalar);
+                inserirPorId('#comandoAtualizar', resposta.comandoAtualizar);
+                inserirPorId('#comandoApagar', resposta.comandoApagar);
+                
+            })
+        })
+        .catch(err => console.warn(err));
+
+}
 
 function enviar(metodo, formulario){ 
     let met = metodo.toLowerCase();
@@ -75,7 +99,7 @@ function enviar(metodo, formulario){
                 'comandoInstalar': getByID('#comandoInstalar'),
                 'comandoAtualizar': getByID('#comandoAtualizar'),
                 'comandoApagar': getByID('#comandoApagar'),
-                'categorias': getByID('#categoria')
+                'categorias': [ getByID('#categoria') ]
             });
         }
 

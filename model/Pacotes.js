@@ -1,5 +1,6 @@
 let mongoose = require('mongoose');
 let Schema =  mongoose.Schema;
+const Categorias = require('./Categorias');
 
 mongoose.Promise = global.Promise;
 

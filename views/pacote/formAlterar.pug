@@ -1,0 +1,51 @@
+doctype html
+html(lang="pt-br")
+    head
+        title Alterar categoria
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="/static/hcw.min.css")
+        script(src="/static/formulario.js")
+    body
+        header.padding-16.blue
+            h1.text-center Alterar
+        
+        section.margin-10.light-gray
+            div.card
+                h3.padding-16.blue.text-center Formulário de alterar  categoria
+                div.padding-16
+                    form(method="post", id="formAlterar", action="/categoria/", onsubmit="return bloquear()")
+                        label(for="id") Selecione qual deseja alterar:
+                        select(id="id", name="id", onchange="carregar('pacote', 'GET')", class="input white border-bottom-blue-focus")
+                            each item in pacote
+                                option(value=item.id) #{item.nome} 
+
+                        label(for="nome") Nome:
+                        input(type="text", name="nome", id="nome", class="input white border-bottom-blue-focus", placeholder="Digite o nome do pacote")
+                        
+                        label(for="categoria") Categoria:
+                        select(id="categoria", name="categoria", class="input white border-bottom-blue-focus")
+                            each item in categoria
+                                option(value=item.id) #{item.categoria} 
+
+                        label(for="versao") Versão:
+                        input(type="text", name="versao", id="versao", class="input white border-bottom-blue-focus", placeholder="Digite a versão do pacote")
+                        
+                        label(for="descricao") Descrição:
+                        textarea(cols="60", rows="5", name="descricao", id="descricao", class="input white border-bottom-blue-focus", placeholder="Digite a descrição do pacote")
+                        
+                        label(for="comandoInstalar") Comando para instalar:
+                        input(type="text", name="comandoInstalar", id="comandoInstalar", class="input white border-bottom-blue-focus", placeholder="Digite o comando para instalar o pacote")
+                        
+                        label(for="comandoAtualizar") Comando para atualizar:
+                        input(type="text", name="comandoAtualizar", id="comandoAtualizar", class="input white border-bottom-blue-focus", placeholder="Digite o comando para atualizar o pacote")
+                        
+                        label(for="comandoApagar") Comando para apagar:
+                        input(type="text", name="comandoApagar", id="comandoApagar", class="input white border-bottom-blue-focus", placeholder="Digite o comando para apagar o pacote")
+                        
+                        br
+                        input(type="submit", class="btn btn-block green", onclick="enviar('PUT', 'pacote')", value="Cadastrar")
+
+                
+                
+
+    

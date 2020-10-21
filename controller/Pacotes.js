@@ -1,12 +1,19 @@
 const Pacotes =  require('../model/Pacotes');
+const Categorias = require('../model/Categorias');
 
 exports.formCadastrar = (req, res, next) => {
-    res.render('pacote/formCadastrar')
+    Categorias.find({}, (erro, categoria) => {
+        if(erro) res.redirect(`/erro?erro=${erro}`)
+        res.render('pacote/formCadastrar', {categoria})
+    });
 }
 exports.formAlterar = (req, res, next) => {
     Pacotes.find({}, (err, pacote) => {
         if(err) res.redirect(`/erro?erro=${erro}`);
-        res.render('pacote/formAlterar', {pacote});
+        Categorias.find({}, (erro, categoria) => {
+            if(erro)re.redirect(`/error?erro${erro}`);
+            res.render('pacote/formAlterar', {pacote, categoria});
+        });
     });
 }
 exports.formApagar = (req, res, next) => {
@@ -23,6 +30,18 @@ exports.formListar = (req, res, next) => {
     });
 }
 
+exports.listarPorId = (req, res, next) => {
+    Pacotes.findById({_id: req.params.id}, (err, pacote) => {
+        if(err) res.redirect(`/erro?erro=${err}`);
+        res.send({pacote});
+    });
+}
+exports.listar = (req, res, next) => {
+    Pacotes.find({}, (err, pacote) => {
+        if(err) res.redirect(`/erro?erro=${err}`);
+        res.send({pacote});
+    });
+}
 
 exports.inserir = (req, res, next) => {
     let newPacotes = new Pacotes(req.body);

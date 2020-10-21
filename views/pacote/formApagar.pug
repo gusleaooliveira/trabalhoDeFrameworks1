@@ -1,0 +1,26 @@
+doctype html
+html(lang="pt-br")
+    head
+        title Apagar pacote
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="/static/hcw.min.css")
+        script(src="/static/formulario.js")
+    body
+        header.padding-16.orange
+            h1.text-center Apagar
+        
+        section.margin-10.light-gray
+            div.card
+                h3.padding-16.orange.text-center Formulário de apagar  categoria
+                div.padding-16
+                    form(method="post", action="/pacote/", onsubmit="return bloquear()")
+                        label(for="id") Selecione qual deseja apagar:
+                        select(id="id", name="id", class="input white border-bottom-blue-focus")
+                            each item in pacote
+                                option(value=item.id) #{item.nome} 
+
+                        br
+                        input(type="submit", class="btn btn-block green", onclick="enviar('DELETE', 'pacote')", value="Apagar")
+
+
+    
