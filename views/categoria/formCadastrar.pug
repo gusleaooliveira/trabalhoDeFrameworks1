@@ -1,0 +1,22 @@
+doctype html
+html(lang="pt-br")
+    head
+        title Cadastrar categoria
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="/static/hcw.min.css")
+    body
+        header.padding-16.light-blue
+            h1.text-center Cadastrar categoria
+        
+        section.margin-10.light-gray
+            div.card
+                h3.padding-16.light-blue.text-center Formulário de cadastro
+                div.padding-16
+                    form(method="post", id="tipoCadastrar", action="/categoria/", onsubmit="return bloquear()")
+                        label(for="categoria") Categoria:
+                        input(type="text", name="categoria", id="categoria", class="input white border-bottom-blue-focus", placeholder="Digite a categoria do aplicativo")
+                        br
+                        input(type="submit", class="btn btn-block green", onclick="enviar('POST', 'categoria')", value="Cadastrar")
+
+
+    

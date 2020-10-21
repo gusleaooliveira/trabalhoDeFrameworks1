@@ -1,0 +1,21 @@
+doctype html
+html(lang="pt-br")
+    head
+        title Listar categoria
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="/static/hcw.min.css")
+    body
+        header.padding-16.blue
+            h1.text-center Listar categoria
+        
+        section.margin-10.light-gray
+            div.card
+                h3.padding-16.blue.text-center Formulário de listar  categoria
+                div.padding-16
+                    ul
+                        each item in categoria
+                            li #{item.categoria} 
+
+
+
+    

@@ -4,46 +4,50 @@ exports.formCadastrar = (req, res, next) => {
     res.render('usuario/formCadastrar')
 }
 exports.formAlterar = (req, res, next) => {
-    Usuarios.find({}, (err, usuarios) => {
+    Usuarios.find({}, (err, usuario) => {
         if(err) res.redirect(`/erro?erro=${erro}`);
-        res.render('usuario/formAlterar', {usuarios});
+        res.render('usuario/formAlterar', {usuario});
     });
 }
 exports.formApagar = (req, res, next) => {
-    Usuarios.find({}, (err, usuarios) => {
+    Usuarios.find({}, (err, usuario) => {
         if(err) res.redirect(`/erro?erro=${erro}`);
-        res.render('usuario/formApagar', {usuarios});
+        res.render('usuario/formApagar', {usuario});
     });
 }
 
 exports.formListar = (req, res, next) => {
-    Usuarios.find({}, (err, usuarios) => {
+    Usuarios.find({}, (err, usuario) => {
         if(err) res.redirect(`/erro?erro=${erro}`);
-        res.render('usuario/formListar', {usuarios});
+        res.render('usuario/formListar', {usuario});
     });
 }
 
 
 exports.inserir = (req, res, next) => {
-    let newUsuarios = new usuarios(req.body);
-    newUsuarios.save((err, usuarios) => {
+    let newUsuario = new Usuarios(req.body);
+    newUsuario.save((err, usuario) => {
         if(err) res.redirect(`/erro?erro=${erro}`);
-        res.send({usuarios});
+        res.render('sucesso', {sucesso: usuario});
     });
 }
 
 exports.alterar = (req, res, next) => {
-    Usuarios.findOneAndUpdate({_id: req.params.id}, req.body, {new : true}, (err, usuarios) => {
-        if(err) res.send(err);
-        res.send(usuarios);
+    Usuarios.findOneAndUpdate({_id: req.params.id}, req.body, {new : true}, (err, usuario) => {
+        if(err) res.redirect(`/erro?erro=${erro}`);
+        res.render('sucesso', {sucesso: usuario});
     });
 }
 
 exports.apagar = (req, res, next) => {
-    Usuarios.findOneAndDelete({_id: req.params.id}, (error, usuarios) =>{
-        if(error) res.send(error);
-        res.send(usuarios);
+    Usuarios.findOneAndDelete({_id: req.params.id}, (error, usuario) =>{
+        if(error) res.redirect(`/erro?erro=${erro}`);
+        res.render('sucesso', {sucesso: usuario});
     });
 }
+
+
+
+
 
 

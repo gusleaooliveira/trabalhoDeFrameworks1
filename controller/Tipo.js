@@ -34,14 +34,14 @@ exports.inserir = (req, res, next) => {
 
 exports.alterar = (req, res, next) => {
     Tipos.findOneAndUpdate({_id: req.params.id}, req.body, {new : true}, (err, tipo) => {
-        if(err) res.send(err);
+        if(err) res.redirect(`/erro?erro=${erro}`);
         res.render('sucesso', {sucesso: tipo});
     });
 }
 
 exports.apagar = (req, res, next) => {
     Tipos.findOneAndDelete({_id: req.params.id}, (error, tipo) =>{
-        if(error) res.send(error);
+        if(error) res.redirect(`/erro?erro=${erro}`);
         res.render('sucesso', {sucesso: tipo});
     });
 }

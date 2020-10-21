@@ -1,7 +1,7 @@
 doctype html
 html(lang="pt-br")
     head
-        title Apagar Tipo de Usuário
+        title Apagar categoria
         meta(charset="utf-8")
         link(rel="stylesheet", href="/static/hcw.min.css")
         script(src="/static/formulario.js")
@@ -11,16 +11,16 @@ html(lang="pt-br")
         
         section.margin-10.light-gray
             div.card
-                h3.padding-16.orange.text-center Formulário de apagar  tipo de novos usuários
+                h3.padding-16.orange.text-center Formulário de apagar  categoria
                 div.padding-16
-                    form(method="post", action="/tipo/", onsubmit="return bloquear()")
+                    form(method="post", action="/categoria/", onsubmit="return bloquear()")
                         label(for="id") Selecione qual deseja apagar:
                         select(id="id", name="id", class="input white border-bottom-blue-focus")
-                            each item in tipo
-                                option(value=item.id) #{item.tipo} 
+                            each item in categoria
+                                option(value=item.id) #{item.categoria} 
 
                         br
-                        input(type="submit", class="btn btn-block green", onclick="enviar('DELETE', 'tipo')", value="Apagar")
+                        input(type="submit", class="btn btn-block green", onclick="enviar('DELETE', 'categoria')", value="Apagar")
 
 
     

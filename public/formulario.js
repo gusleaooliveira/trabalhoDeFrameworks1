@@ -85,7 +85,7 @@ function enviar(metodo, formulario){
         executar(metodo, cabecalho, url, json);
     }
     else if(met == 'delete'){
-        url = `/tipo/${getByID('#id')}`;
+        url = `/${formulario}/${getByID('#id')}`;
         
         executarOutro(url, metodo);
     }

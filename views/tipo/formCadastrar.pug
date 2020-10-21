@@ -12,7 +12,7 @@ html(lang="pt-br")
             div.card
                 h3.padding-16.light-blue.text-center Formulário de cadastro de novos usuários
                 div.padding-16
-                    form(method="post", id="tipoCadastrar", action="/tipo/")
+                    form(method="post", id="tipoCadastrar", action="/tipo/", onsubmit="return bloquear()")
                         label(for="tipo") Tipo de usuário:
                         input(type="text", name="tipo", id="tipo", class="input white border-bottom-blue-focus", placeholder="Digite o tipo de usuário")
                         br
