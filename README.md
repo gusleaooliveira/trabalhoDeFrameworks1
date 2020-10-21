@@ -78,10 +78,10 @@ Será criado uma loja de aplicativos voltado para linux, onde:
         - [x] Model de usuário
         - [x] Model de categoria
         - [x] Model de pacotes  
-- [ ] Segurança
-    - [ ] Criptografar senha
-    - [x] Usar jwt **TODO:** alterar futuramente caso necessário
+- [x] Segurança
+    - [x] Criptografar senha **TODO:** Testar senha
+    - [x] Usar jwt 
     - [x] Usar cookies
 - [x] Deploy
-    - [x] Fazer o deploy para o atlas
-    - [x] Fazer o deploy para o heroku
+    - [x] Fazer o deploy para o **atlas** 
+    - [x] Fazer o deploy para o **heroku**
