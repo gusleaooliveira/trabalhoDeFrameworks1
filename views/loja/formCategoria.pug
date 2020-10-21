@@ -15,29 +15,17 @@ html(lang="pt-br")
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.raisin-black.text-center Pacote
+                h3.padding-16.raisin-black.text-center Destaques
 
-                each item in pacote
-                    h3.text-center #{item.nome}                                
-               
-                    p 
-                        b Categoria: 
-                            each cat in item.categorias
-                                a(href="/loja/categoria/"+cat.id, class="text-center text-blue text-red-hover") #{cat.categoria}
-
-                    br
-
-                    label(for="comandoInstalar") Comando para instalar o pacote:
-                    input(name="comandoInstalar", id="comandoInstalar", class="input white border-bottom-blue-focus", readonly, value=item.comandoInstalar)    
-                    
-                    label(for="comandoAtualizar") Comando para atualizar o pacote:
-                    input(name="comandoAtualizar", id="comandoAtualizar", class="input white border-bottom-blue-focus", readonly, value=item.comandoAtualizar)    
-                    
-                    label(for="comandoApagar") Comando para apagar o pacote:
-                    input(name="comandoApagar", id="comandoApagar", class="input white border-bottom-blue-focus", readonly, value=item.comandoApagar)    
-
-                    p 
-                        b Versão: #{item.versao}
-
-                    label(for="descricao") Descrição do pacote:
-                    textarea(name="descricao", id="descricao", cols="30", rows="10", class="input white border-bottom-blue-focus", readonly,) #{item.descricao}
+                div.grid.column-3
+                    each item in pacote
+                        div.card
+                            div.img-app.raisin-black
+                                p.text-center <i class="fas fa-image"></i> Imagem do aplicativo
+                            div.padding-16.text-center
+                                a(href='/loja/pacote/'+item.id, class="text-center text-gray text-raisin-black-hover") 
+                                    h4 #{item.nome}
+                                each cat in item.categorias
+                                    a(href="/loja/categoria/"+cat.id, class="text-center text-gray text-raisin-black-hover") #{cat.categoria}
+                               
+                                    
