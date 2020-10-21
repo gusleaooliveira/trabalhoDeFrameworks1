@@ -43,11 +43,11 @@ Será criado uma loja de aplicativos voltado para linux, onde:
             - [x] View de listagem de tipo de usuário
             - [x] View de alteração   tipo de usuário
             - [x] View de apagar      tipo de usuário
-        - [ ] View de usuário
-            - [ ] View de cadastro  usuário
-            - [ ] View de listagem  usuário
-            - [ ] View de alteração usuário
-            - [ ] View de apagar    usuário
+        - [x] View de usuário
+            - [x] View de cadastro  usuário
+            - [x] View de listagem  usuário
+            - [x] View de alteração usuário
+            - [x] View de apagar    usuário
         - [x] View de categoria
             - [x] View de cadastro   categoria  
             - [x] View de listagem   categoria

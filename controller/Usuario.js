@@ -1,5 +1,7 @@
 const Usuarios =  require('../model/Usuario');
 const Tipos = require('../model/Tipos') 
+const bcrypt = require('bcrypt');
+const salto = bcrypt.genSalt(13);
 
 exports.formCadastrar = (req, res, next) => {
     Tipos.find({}, (err, tipo) => {
