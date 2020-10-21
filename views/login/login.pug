@@ -1,0 +1,26 @@
+doctype html
+html(lang="pt-br")
+    head
+        title Login
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="/static/hcw.min.css")
+        script(src="/static/formulario.js")
+
+    body
+        header.padding-16.light-blue
+            h1.text-center Fazer login
+        
+        section.margin-10.light-gray
+            div.card
+                h3.padding-16.light-blue.text-center Formulário de cadastro de novos usuários
+                div.padding-16
+                    form(method="post", id="loginCadastrar", action="/login/", onsubmit="return bloquear()")
+                        label(for="email") Email:
+                        input(type="email", name="email", id="email", class="input white border-bottom-blue-focus", placeholder="Digite o email")
+                        
+                        label(for="senha") Senha:
+                        input(type="password", name="senha", id="senha", class="input white border-bottom-blue-focus", placeholder="Digite o senha")
+                        br
+                        
+                        br
+                        input(type="submit", class="btn btn-block green", onclick="login('login', 'POST')", value="Cadastrar")

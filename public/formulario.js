@@ -82,6 +82,34 @@ function carregar(local, metodo){
 
 }
 
+function login(local, metodo){
+    let url = `/${local}/`;
+    let cabecalho = { 'Content-Type': 'application/json' };
+    let json = JSON.stringify({
+        'email': getByID('#email'),
+        'senha': getByID('#senha')
+    });
+    
+
+    console.warn('método: ', metodo);
+    console.warn('cabecalho: ', cabecalho);
+    console.warn('url: ', url);
+    console.warn('json: ', json);
+
+    if(verificar('Deseja continuar?')){
+        fetch(url, { method: metodo, headers: cabecalho, body: json })
+            .then((res) => {
+                alert('Logado com sucesso!');
+            })
+            .catch((err) => { alert('Ocorreu um erro ao logar! ');  });
+    }
+    else{
+        alert('Você cancelou o salvamento!');
+    }
+
+}
+
+
 function enviar(metodo, formulario){ 
     let met = metodo.toLowerCase();
     let json =  null;
