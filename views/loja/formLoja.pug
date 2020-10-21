@@ -23,9 +23,9 @@ html(lang="pt-br")
                             div.img-app.raisin-black
                                 p.text-center <i class="fas fa-image"></i> Imagem do aplicativo
                             div.padding-16.text-center
-                                a(href='/loja/pacote?id='+item.id, class="text-center text-gray text-raisin-black-hover") 
+                                a(href='/loja/pacote/'+item.id, class="text-center text-gray text-raisin-black-hover") 
                                     h4 #{item.nome}
                                 each cat in item.categorias
-                                    a(href="/loja/categoria?id="+cat.id) #{cat.categoria}
+                                    a(href="/loja/categoria/"+cat.id, class="text-center text-gray text-raisin-black-hover") #{cat.categoria}
                                
                                     

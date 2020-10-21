@@ -1,0 +1,43 @@
+doctype html
+html(lang="pt-br")
+    head
+        title Loja de aplicativos
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="/static/hcw.min.css")
+        link(rel="stylesheet", href="/static/estilo.css")
+        script(src="/static/formulario.js")
+        script(src="https://kit.fontawesome.com/089953a984.js", crossorigin="anonymous")
+    body
+        header.padding-16.raisin-black
+            h1.text-center Loja de aplicativos
+        
+        include menu.pug
+
+        section.margin-10.light-gray
+            div.card
+                h3.padding-16.raisin-black.text-center Pacote
+
+                each item in pacote
+                    h3.text-center #{item.nome}                                
+               
+                    p 
+                        b Categoria: 
+                            each cat in item.categorias
+                                a(href="/loja/categoria/"+cat.id, class="text-center text-blue text-red-hover") #{cat.categoria}
+
+                    br
+
+                    label(for="comandoInstalar") Comando para instalar o pacote:
+                    input(name="comandoInstalar", id="comandoInstalar", class="input white border-bottom-blue-focus", readonly, value=item.comandoInstalar)    
+                    
+                    label(for="comandoAtualizar") Comando para atualizar o pacote:
+                    input(name="comandoAtualizar", id="comandoAtualizar", class="input white border-bottom-blue-focus", readonly, value=item.comandoAtualizar)    
+                    
+                    label(for="comandoApagar") Comando para apagar o pacote:
+                    input(name="comandoApagar", id="comandoApagar", class="input white border-bottom-blue-focus", readonly, value=item.comandoApagar)    
+
+                    p 
+                        b Versão: #{item.versao}
+
+                    label(for="descricao") Descrição do pacote:
+                    textarea(name="descricao", id="descricao", cols="30", rows="10", class="input white border-bottom-blue-focus", readonly,) #{item.descricao}
