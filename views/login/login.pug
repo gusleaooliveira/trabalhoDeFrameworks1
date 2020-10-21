@@ -7,14 +7,14 @@ html(lang="pt-br")
         script(src="/static/formulario.js")
 
     body
-        header.padding-16.light-blue
+        header.padding-16.teal
             h1.text-center Fazer login
         
         include ../menu.pug
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.light-blue.text-center Formulário de cadastro de novos usuários
+                h3.padding-16.teal.text-center Formulário de cadastro de novos usuários
                 div.padding-16
                     form(method="post", id="loginCadastrar", action="/login/", onsubmit="return bloquear()")
                         label(for="email") Email:
