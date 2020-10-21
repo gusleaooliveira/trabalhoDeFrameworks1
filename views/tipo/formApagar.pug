@@ -6,14 +6,14 @@ html(lang="pt-br")
         link(rel="stylesheet", href="/static/hcw.min.css")
         script(src="/static/formulario.js")
     body
-        header.padding-16.orange
+        header.padding-16.raisin-black
             h1.text-center Apagar
         
         include menu.pug
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.orange.text-center Formulário de apagar  tipo de novos usuários
+                h3.padding-16.raisin-black.text-center Formulário de apagar  tipo de novos usuários
                 div.padding-16
                     form(method="post", action="/tipo/", onsubmit="return bloquear()")
                         label(for="id") Selecione qual deseja apagar:
@@ -22,7 +22,7 @@ html(lang="pt-br")
                                 option(value=item.id) #{item.tipo} 
 
                         br
-                        input(type="submit", class="btn btn-block green", onclick="enviar('DELETE', 'tipo')", value="Apagar")
+                        input(type="submit", class="btn btn-block red", onclick="enviar('DELETE', 'tipo')", value="Apagar")
 
 
     

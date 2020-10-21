@@ -14,7 +14,7 @@ exports.verificaJwt = (req, res, next) => {
     else if(req.signedCookies.token){ token = req.signedCookies.token; }
     else { 
         if(req.headers["x-access-token"]){ token = req.headers['x-access-token'];}
-        else { res.redirect(`/erro?erro='Nenhum token fornecido!'`); }
+        else { res.redirect(`/erro?erro='Nenhum token fornecido! Faça login novamente!'`); }
     }
     jwt.verify(token, process.env.SECRET, (err, decoded) => {
         if(err)return res.redirect(`/erro?erro='Falha ao autenticar o token!'`)
@@ -45,6 +45,6 @@ exports.login = (req, res, next) => {
 
 exports.logout = (req, res, next) => {
     if(req.cookies || req.signedCookies){
-        res.clearCookies('token').render('index');
+        res.clearCookie('token').render('index');
     }
 }

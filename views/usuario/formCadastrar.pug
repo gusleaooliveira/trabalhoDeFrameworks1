@@ -6,14 +6,14 @@ html(lang="pt-br")
         link(rel="stylesheet", href="/static/hcw.min.css")
         script(src="/static/formulario.js")
     body
-        header.padding-16.light-blue
+        header.padding-16.raisin-black
             h1.text-center Cadastrar usuário
         
         include menu.pug
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.light-blue.text-center Formulário de usuário
+                h3.padding-16.raisin-black.text-center Formulário de usuário
                 div.padding-16
                     form(method="post", id="usuarioCadastrar", action="/usuario/", onsubmit="return bloquear()")
                         label(for="nome") Nome:

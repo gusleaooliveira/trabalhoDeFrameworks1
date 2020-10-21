@@ -5,14 +5,14 @@ html(lang="pt-br")
         meta(charset="utf-8")
         link(rel="stylesheet", href="/static/hcw.min.css")
     body
-        header.padding-16.light-blue
+        header.padding-16.raisin-black
             h1.text-center Cadastrar categoria
         
         include menu.pug
 
         section.margin-10.light-gray
             div.card
-                h3.padding-16.light-blue.text-center Formulário de cadastro
+                h3.padding-16.raisin-black.text-center Formulário de cadastro
                 div.padding-16
                     form(method="post", id="categoriaCadastrar", action="/categoria/", onsubmit="return bloquear()")
                         label(for="categoria") Categoria:
